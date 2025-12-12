@@ -5,7 +5,7 @@
     { "src": "package.json", "use": "@vercel/static-build" }
   ],
   "rewrites": [
-    { "source": "/api/(.*)", "dest": "/backend/server.js" },
-    { "source": "/(.*)", "dest": "/index.html" }
+    { "source": "/api/(.*)", "destination": "/backend/server.js" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
