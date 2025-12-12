@@ -18,14 +18,9 @@ app.use(express.json()); // for parsing application/json
 mongoose.connect(MONGODB_URI)
   .then(() => {
     console.log('Database Connected');
-    // Start the server only after successful database connection
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-    });
   })
   .catch((error) => {
     console.error('Database connection error:', error);
-    process.exit(1); // Exit process with failure
   });
 
 // Basic route for testing
@@ -42,3 +37,5 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
+
+module.exports = app;
