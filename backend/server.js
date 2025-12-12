@@ -39,3 +39,11 @@ app.use((err, req, res, next) => {
 });
 
 module.exports = app;
+
+// This block will only run if the script is executed directly (e.g., `node server.js`)
+// It will not run when the file is imported by Vercel for serverless deployment
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server is running for local development on port ${PORT}`);
+  });
+}
