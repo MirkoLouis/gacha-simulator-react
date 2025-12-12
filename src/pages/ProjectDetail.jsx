@@ -12,7 +12,7 @@ const ProjectDetail = () => {
     useEffect(() => {
         const fetchProject = async () => {
             try {
-                const response = await fetch(`${API_BASE_URL}/api/projects/${id}`);
+                const response = await fetch(`${API_BASE_URL}/projects/${id}`);
                 if (!response.ok) {
                     throw new Error('Project not found');
                 }

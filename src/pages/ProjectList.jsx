@@ -12,7 +12,7 @@ const ProjectList = () => {
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const response = await fetch(`${API_BASE_URL}/api/projects`);
+                const response = await fetch(`${API_BASE_URL}/projects`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -34,7 +34,7 @@ const ProjectList = () => {
             return;
         }
         try {
-            const response = await fetch(`${API_BASE_URL}/api/projects`, {
+            const response = await fetch(`${API_BASE_URL}/projects`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ const ProjectList = () => {
 
     const handleUpdateStatus = async (id, newStatus) => {
         try {
-            const response = await fetch(`${API_BASE_URL}/api/projects/${id}`, {
+            const response = await fetch(`${API_BASE_URL}/projects/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ const ProjectList = () => {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`${API_BASE_URL}/api/projects/${id}`, {
+            const response = await fetch(`${API_BASE_URL}/projects/${id}`, {
                 method: 'DELETE',
             });
             if (!response.ok && response.status !== 204) {
