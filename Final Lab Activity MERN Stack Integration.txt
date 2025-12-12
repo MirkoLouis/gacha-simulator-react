@@ -1,0 +1,70 @@
+Final Lab Activity: MERN Stack Integration and Proof of Concept
+
+Activity Title: Full Stack Integration: Complete CRUD and Deployment Proof of Concept
+
+
+Objective
+To integrate the existing React Frontend (Activity A) with the Express/MongoDB Backend (Activity B), complete the remaining Update and Delete operations, and demonstrate a successful live deployment showing core functionality.
+
+Tools
+React, Node/Express, Mongoose, fetch API or Axios, useEffect Hook, Render or Vercel (for deployment).
+
+Deliverable
+1. A single ZIP archive of the complete MERN project code. 2. A single working URL link to the live deployed application.
+
+Help Resources
+1. React Docs: Fetching Data with useEffect. 
+2. Tutorials: "How to set up CORS in Express" and "Deploy MERN to Render/Vercel."
+
+Student Tasks and Requirements
+1. Backend API Completion (C, U, D)
+Complete the remaining API routes on your Express server to handle all CRUD operations.
+1.1 DELETE Route
+Implement the route to delete a project log entry by its unique ID.
+DELETE /api/projects/:id route using ProjectLog.findByIdAndDelete(). Must return a 204 No Content status code on success.
+
+1.2 UPDATE Route
+Implement the route to update an existing project entry.
+PATCH /api/projects/:id route using ProjectLog.findByIdAndUpdate(). Must validate and return the updated document.
+
+1.3 CORS Setup
+Configure the backend to allow requests from the frontend's local development server.
+Install and configure the cors middleware to enable cross-origin requests.
+
+
+2. Frontend Integration (Full CRUD)
+Connect the React application to the fully functional backend API.
+2.1 Read/Sync Data
+Modify the List View to fetch data from the Express API upon mounting.
+Use the useEffect Hook to send a GET request and store the received array in state.
+
+2.2 Create/Update/Delete
+Implement the UI functions to manage data changes.
+* Create (C): Form sends POST. * Update (U): Button sends PATCH (e.g., status change). * Delete (D): Button sends DELETE.
+
+2.3 State Efficiency
+Ensure the UI updates instantly after C, U, or D operations.
+Use efficient state management (e.g., .filter() for delete, .map() for update) to modify the local React state instead of forcing a full data re-fetch.
+
+3. Proof of Concept Deployment
+Deploy the working application to a public server to demonstrate the full MERN flow.
+3.1 Production Config
+Configure the backend to be deployment-ready.
+Backend must use process.env.PORT. MongoDB URI must be secured using a .env file.
+
+3.2 Live Deployment
+Deploy both the React frontend and the Express API.
+Use a free hosting service (e.g., Render for API, Vercel for React). The frontend must be configured to fetch data from the live deployed API URL.
+
+
+Structure and Interactivity
+Architectural Layering: The entire application must exhibit clear separation: Client (React) handles the UI and HTTP requests; Server (Express/Node) handles routing and business logic; Database (MongoDB) handles persistence.
+Interactivity: The final live application must prove that the full CRUD cycle works: A user can Create a new entry through the UI, Read the list instantly, Update an item's status, and Delete an item—all visible and persistent after a page refresh.
+
+Code Quality
+Security: MongoDB URI must be hidden using .env variables.
+Asynchronicity: All frontend HTTP requests and backend Mongoose operations must use async/await for clean, non-blocking code.
+Error Handling: Implement basic try...catch blocks for API requests on both the frontend and backend.
+Cleanliness: No console warnings or errors should appear when the application is running.
+
+NOTE: This is a bonus activity for your personal development and use. You may or may not submit this activity (But I still highly recommend that you do this and turn in to fully realize all your laboratory activities). This activity will not be graded and is not part of your final grade.

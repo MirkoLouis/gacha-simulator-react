@@ -1,0 +1,33 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# build outputs
+/dist
+/dist-ssr
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.bak
+*.pyc
+*.log
+*.swp
+
+# environment variables
+.env
+.env.local
+.env.*.local
+
+# misc
+.DS_Store
+Thumbs.db
+
+# Backend specific
+/backend/node_modules
+/backend/.env
