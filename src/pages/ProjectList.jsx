@@ -8,6 +8,8 @@ const ProjectList = () => {
     const [error, setError] = useState(null);
     const [newTitle, setNewTitle] = useState('');
     const [newDescription, setNewDescription] = useState('');
+    const [deletingId, setDeletingId] = useState(null);
+    const [isCreating, setIsCreating] = useState(false);
 
     useEffect(() => {
         const fetchProjects = async () => {
@@ -33,6 +35,7 @@ const ProjectList = () => {
             alert("Both Title and Description are required.");
             return;
         }
+        setIsCreating(true);
         try {
             const response = await fetch(`${API_BASE_URL}/projects`, {
                 method: 'POST',
@@ -51,6 +54,8 @@ const ProjectList = () => {
         } catch (err) {
             setError(err.message);
             console.error("Failed to create project:", err);
+        } finally {
+            setIsCreating(false);
         }
     };
 
@@ -86,6 +91,7 @@ const ProjectList = () => {
     };
 
     const handleDelete = async (id) => {
+        setDeletingId(id);
         try {
             const response = await fetch(`${API_BASE_URL}/projects/${id}`, {
                 method: 'DELETE',
@@ -97,6 +103,8 @@ const ProjectList = () => {
         } catch (err) {
             setError(err.message);
             console.error("Failed to delete project:", err);
+        } finally {
+            setDeletingId(null);
         }
     };
 
@@ -131,8 +139,9 @@ const ProjectList = () => {
                                     <button 
                                         className="delete-button"
                                         onClick={() => handleDelete(project._id)}
+                                        disabled={deletingId === project._id}
                                     >
-                                        Delete
+                                        {deletingId === project._id ? 'Deleting...' : 'Delete'}
                                     </button>
                                 </div>
                             </div>
@@ -156,7 +165,9 @@ const ProjectList = () => {
                             onChange={(e) => setNewDescription(e.target.value)}
                             required
                         />
-                        <button type="submit">Create Project</button>
+                        <button type="submit" disabled={isCreating}>
+                            {isCreating ? 'Creating...' : 'Create Project'}
+                        </button>
                     </form>
                 </div>
             </div>
