@@ -1,15 +1,8 @@
 {
   "version": 2,
   "builds": [
-    {
-      "src": "backend/server.js",
-      "use": "@vercel/node",
-      "config": { "includeFiles": ["backend/routes/**", "backend/models/**"] }
-    },
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build"
-    }
+    { "src": "backend/server.js", "use": "@vercel/node" },
+    { "src": "package.json", "use": "@vercel/static-build" }
   ],
   "rewrites": [
     { "src": "/api/(.*)", "dest": "/backend/server.js" },
