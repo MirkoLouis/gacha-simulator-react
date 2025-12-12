@@ -7,7 +7,6 @@
     "start": "vite --open",
     "dev": "vite",
     "build": "vite build",
-    "build-vercel": "npm install && npm run build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
